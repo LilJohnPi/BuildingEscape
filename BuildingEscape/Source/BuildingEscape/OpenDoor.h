@@ -29,4 +29,13 @@ private:
     UPROPERTY(EditAnywhere)
     ATriggerVolume* PressurePlate;
 
+    UPROPERTY(EditAnywhere)
+    AActor* TriggerActor;
+
+    bool bDoorOpen;
+
+    void OpenDoor();
+
+    void CloseDoor();
+
 };
