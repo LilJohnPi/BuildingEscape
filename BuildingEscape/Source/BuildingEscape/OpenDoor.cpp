@@ -20,8 +20,12 @@ void UOpenDoor::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
-	
+   //Get owner
+   AActor* Owner = GetOwner();
+   //Get a rotator, these are super useful as quats are shit and this uses degrees, yaaaay!
+   FRotator NewRotation = FRotator(0.0f, -60.0f, 0.0f);
+   //Set rotation
+   Owner->SetActorRotation(NewRotation);
 }
 
 
