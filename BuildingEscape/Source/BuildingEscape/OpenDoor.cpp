@@ -20,7 +20,7 @@ void UOpenDoor::BeginPlay()
 	Super::BeginPlay();
    TriggerActor = GetWorld()->GetFirstPlayerController()->GetPawn();
    
-   //This doesn't work...I dunno why...
+   //This now works, remember the iterator is a controller and you still need to get the pawn!
    /*UE_LOG(LogTemp, Warning, TEXT("Total player controllers is %i"),GetWorld()->PlayerNum);
    for (FConstPlayerControllerIterator ControllerIterator = GetWorld()->GetPlayerControllerIterator(); ControllerIterator; ++ControllerIterator) {
        UE_LOG(LogTemp, Warning, TEXT("Found player controller"));
@@ -30,7 +30,7 @@ void UOpenDoor::BeginPlay()
        if (PlayerController)
        {
            UE_LOG(LogTemp, Warning, TEXT("Assigned a trigger actor"));
-           TriggerActor = PlayerController;
+           TriggerActor = PlayerController->GetPawn();
        }
    }*/
 }
