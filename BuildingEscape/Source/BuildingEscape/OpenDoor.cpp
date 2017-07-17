@@ -40,13 +40,22 @@ void UOpenDoor::BeginPlay()
 void UOpenDoor::TickComponent( float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction )
 {
 	Super::TickComponent( DeltaTime, TickType, ThisTickFunction );
-   if (PressurePlate->IsOverlappingActor(TriggerActor)) OpenDoor();
-   else CloseDoor();
+   if (PressurePlate->IsOverlappingActor(TriggerActor))
+   {
+       OpenDoor();
+       LastDoorOpenTime = GetWorld()->GetTimeSeconds();
+   }
+   else if (LastDoorOpenTime + DoorCloseDelay < GetWorld()->GetTimeSeconds())
+   {
+       CloseDoor();
+   }
+
+   
 }
 
 void UOpenDoor::OpenDoor()
 {
-    if (bDoorOpen) return;
+    //if (bDoorOpen) return;
     //Get owner
     AActor* Owner = GetOwner();
     //Get a rotator, these are super useful as quats are shit and this uses degrees, yaaaay!
@@ -58,7 +67,7 @@ void UOpenDoor::OpenDoor()
 
 void UOpenDoor::CloseDoor()
 {
-    if (!bDoorOpen) return;
+    //if (!bDoorOpen) return;
     //Get owner
     AActor* Owner = GetOwner();
     //Get a rotator, these are super useful as quats are shit and this uses degrees, yaaaay!

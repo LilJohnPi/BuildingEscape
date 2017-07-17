@@ -61,6 +61,7 @@ Global
 		{79F869EA-4DD3-4E6D-9F77-B233DD002918}.Shipping|Win64.ActiveCfg = BuiltWithUnrealBuildTool|Win32
 		{79F869EA-4DD3-4E6D-9F77-B233DD002918}.Shipping|Win64.Build.0 = BuiltWithUnrealBuildTool|Win32
 		{79114F16-3281-41C4-A0E1-6F8945BADBE9}.DebugGame Editor|HTML5.ActiveCfg = HTML5_DebugGame_Editor|Win32
+		{79114F16-3281-41C4-A0E1-6F8945BADBE9}.DebugGame Editor|HTML5.Build.0 = HTML5_DebugGame_Editor|Win32
 		{79114F16-3281-41C4-A0E1-6F8945BADBE9}.DebugGame Editor|Win32.ActiveCfg = DebugGame_Editor|Win32
 		{79114F16-3281-41C4-A0E1-6F8945BADBE9}.DebugGame Editor|Win64.ActiveCfg = DebugGame_Editor|x64
 		{79114F16-3281-41C4-A0E1-6F8945BADBE9}.DebugGame Editor|Win64.Build.0 = DebugGame_Editor|x64
