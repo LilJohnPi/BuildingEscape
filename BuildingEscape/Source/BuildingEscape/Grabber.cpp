@@ -36,18 +36,33 @@ void UGrabber::TickComponent( float DeltaTime, ELevelTick TickType, FActorCompon
 
    PlayerController->GetPlayerViewPoint(PlayerLocation, PlayerRotation);
 
-   //FString PlayerLocationString = PlayerLocation.ToString();
-   //FString PlayerRotationString = PlayerRotation.ToString();
+   FString PlayerLocationString = PlayerLocation.ToString();
+   FString PlayerRotationString = PlayerRotation.ToString();
 
-   //UE_LOG(LogTemp, Log, TEXT("Player view : Location: %s  Rotation: %s"), *PlayerLocationString, *PlayerRotationString);
+   UE_LOG(LogTemp, Log, TEXT("Player view : Location: %s  Rotation: %s"), *PlayerLocationString, *PlayerRotationString);
 
    //Draw a red trace in the world to visualise
    FVector LineTraceEnd = PlayerLocation + (PlayerRotation.Vector() * GrabDistanceMultiplier);
    DrawDebugLine(GetWorld(), PlayerLocation, LineTraceEnd, FColor(255, 0, 0), false, -1.0f, 0, 1.0f);
 
+   //Set up query paramters
+   FCollisionQueryParams TraceParameters(FName(TEXT("")), false, GetOwner());
+
    // Ray-cast out to reach distance
+   FHitResult LineTraceResult;
+   GetWorld()->LineTraceSingleByObjectType(LineTraceResult,
+       PlayerLocation,
+       LineTraceEnd,
+       FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody),
+       TraceParameters);
 
    //See what we hit
+   AActor* ActorHit = LineTraceResult.GetActor();
+   if (ActorHit)
+   {
+       FString ActorName = ActorHit->GetName();
+       UE_LOG(LogTemp, Log, TEXT("Actor hit is %s at distance %f"), *ActorName, LineTraceResult.Distance);
+   }
 
 }
 

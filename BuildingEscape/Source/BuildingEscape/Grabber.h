@@ -27,7 +27,7 @@ private:
 
     //Distance of ray trace
     UPROPERTY(EditAnywhere)
-    float GrabDistanceMultiplier = 100.0f;
+    float GrabDistanceMultiplier = 150.0f;
 		
 	
 };
